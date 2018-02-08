@@ -16,7 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 
-import com.stefan.bookreader.catalog.CatalogActivity;
+import com.stefan.bookreader.catalog.ui.CatalogActivity;
 
 public final class SplashScreenBindingAdapter {
 
@@ -36,7 +36,7 @@ public final class SplashScreenBindingAdapter {
                 return textView;
             });
             Animation in = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-            in.setDuration(1000);
+            in.setDuration(2000);
             textSwitcher.setInAnimation(in);
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(text);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -51,8 +51,10 @@ public final class SplashScreenBindingAdapter {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
-                    context.startActivity(new Intent(context, CatalogActivity.class));
+                    Intent intent = new Intent(context, CatalogActivity.class);
+                    context.startActivity(intent);
                     ((Activity) context).overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                    ((Activity) context).finish();
                 }
 
                 @Override

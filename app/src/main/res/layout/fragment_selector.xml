@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.stefan.bookreader.catalog.ui.SelectorViewModel" />
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:padding="@dimen/padding"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_helpushelpyou" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:padding="@dimen/padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/hint_text_size"
+                android:text="@={viewModel.bookName}"
+                android:hint="@string/select_specificContent" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding"
+                android:paddingLeft="@dimen/padding_smaller"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_select_language" />
+
+                <Spinner
+                    style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    app:availableLanguages="@{@stringArray/select_language_array}"
+                    app:viewModel="@{viewModel}" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimaryDark"
+            />
+        <Button
+            android:theme="@style/AppTheme.Button"
+            android:layout_marginBottom="@dimen/padding"
+            android:layout_marginTop="@dimen/padding_smaller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_continue"
+            android:onClick="@{()->viewModel.onContinue" />
+
+    </LinearLayout>
+
+
+</layout>

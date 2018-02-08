@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">BookReader</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="select_select_language">Select your language</string>
+    <string name="select_specificContent">Type here any specific book or leave empty for all the catalog</string>
+    <string name="select_alternative">Otherwise please select as many crtieria as you would like</string>
+    <string name="select_continue">Continue</string>
+    <string name="select_helpushelpyou">In order to provide you with the best experience please let us know what you would like to read about</string>
+    <string-array name="select_language_array">
+        <item>en</item>
+        <item>de</item>
+        <item>fr</item>
+        <item>it</item>
+    </string-array>
 </resources>
