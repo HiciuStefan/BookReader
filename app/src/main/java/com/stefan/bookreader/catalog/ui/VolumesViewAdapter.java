@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 
 import com.stefan.bookreader.R;
 import com.stefan.bookreader.catalog.CatalogActions;
-import com.stefan.bookreader.catalog.repository.network.Volumes;
+import com.stefan.bookreader.networking.model.Volume;
+import com.stefan.bookreader.networking.model.Volumes;
 import com.stefan.bookreader.databinding.RecyclerBookItemBinding;
 
 /**
@@ -51,7 +52,7 @@ public class VolumesViewAdapter extends RecyclerView.Adapter<VolumesViewAdapter.
             this.binding = binding;
         }
 
-        public void setBinding(Volumes.Volume volume, CatalogActions catalogActions) {
+        public void setBinding(Volume volume, CatalogActions catalogActions) {
             binding.setVolume(volume);
             binding.setCatalogActions(catalogActions);
         }

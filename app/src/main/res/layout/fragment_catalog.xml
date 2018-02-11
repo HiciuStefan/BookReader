@@ -32,6 +32,7 @@
             android:id="@+id/progress"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
+            tools:visibility="gone"
             android:layout_gravity="center_vertical|center_horizontal"
             android:visibility="@{viewModel.loading ? View.VISIBLE:View.GONE}"/>
 
@@ -45,6 +46,7 @@
             <ImageView
                 android:src="@drawable/book_not_found"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content" />
 
             <TextView

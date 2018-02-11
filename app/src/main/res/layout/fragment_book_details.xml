@@ -1,13 +1,125 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.stefan.bookreader.catalog.ui.BookDetailsFragment">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.stefan.bookreader.bookdetails.BookDetailsViewModel" />
+    </data>
+
+
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:fitsSystemWindows="true">
 
-</FrameLayout>
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:fitsSystemWindows="true"
+                app:expandedTitleMarginEnd="64dp"
+                app:expandedTitleMarginStart="48dp"
+                app:contentScrim="?attr/colorPrimaryDark"
+                app:expandedTitleTextAppearance="@style/Toolbar.TitleText"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:img="@{viewModel.volume.getVolumeInfo().getImageLinks().getLarge()}"
+                    app:holderimage="@{@drawable/loading}"
+                    app:layout_collapseMode="parallax" />
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:title="@{viewModel.volume.getVolumeInfo().getTitle()}" />
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:padding="@dimen/padding_smaller"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:paddingBottom="@dimen/padding_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Published by "
+                    android:maxLines="1"
+                    app:visibility="@{viewModel.volume.getVolumeInfo().getPublisher()}"
+                    android:text="@{@string/publishedby(viewModel.volume.getVolumeInfo().getPublisher())}" />
+
+                <TextView
+                    android:paddingBottom="@dimen/padding_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    tools:text="Published on september "
+                    app:visibility="@{viewModel.volume.getVolumeInfo().getPublishedDate()}"
+                    android:text="@{@string/published_on(viewModel.volume.getVolumeInfo().getPublishedDate())}" />
+
+
+                <TextView
+                    android:paddingBottom="@dimen/padding_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="300 pages"
+                    app:visibility="@{viewModel.volume.getVolumeInfo().getPageCount()}"
+                    android:text="@{@string/pages + viewModel.volume.getVolumeInfo().getPageCount() }" />
+
+                <TextView
+                    android:paddingBottom="@dimen/padding_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="It's an adventure book"
+                    app:text="@{viewModel.volume.getVolumeInfo().getCategories()}" />
+
+                <TextView
+                    android:paddingBottom="@dimen/padding_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Has a rating of 1 out of 3 ratings"
+                    app:ratings="@{viewModel.volume.getVolumeInfo()}" />
+
+                <TextView
+                    android:paddingBottom="@dimen/padding_small"
+                    android:layout_gravity="left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="This is what is probably going to be a really really really long description"
+                    android:text="@{viewModel.volume.getVolumeInfo().getDescription()}" />
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</layout>

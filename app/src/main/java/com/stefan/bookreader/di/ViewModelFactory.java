@@ -6,7 +6,9 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 import android.util.ArrayMap;
 
+import com.stefan.bookreader.bookdetails.BookDetailsViewModel;
 import com.stefan.bookreader.catalog.CatalogViewModel;
+import com.stefan.bookreader.catalog.navigator.CatalogNavigator;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -21,6 +23,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public ViewModelFactory(ViewModelSubComponent viewModelSubComponent) {
         creators = new ArrayMap<>();
         creators.put(CatalogViewModel.class, () -> viewModelSubComponent.provideCatalogViewModel());
+        creators.put(BookDetailsViewModel.class, () -> viewModelSubComponent.provideBookDetailViewModel());
     }
 
     @NonNull

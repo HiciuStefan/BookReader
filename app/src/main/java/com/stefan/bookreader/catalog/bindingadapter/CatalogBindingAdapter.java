@@ -1,21 +1,20 @@
-package com.stefan.bookreader.catalog.ui;
+package com.stefan.bookreader.catalog.bindingadapter;
 
 import android.databinding.BindingAdapter;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.stefan.bookreader.R;
 import com.stefan.bookreader.catalog.CatalogActions;
-import com.stefan.bookreader.catalog.SelectorViewModel;
-import com.stefan.bookreader.catalog.repository.network.Volumes;
+import com.stefan.bookreader.catalog.ui.VolumesViewAdapter;
+import com.stefan.bookreader.networking.model.Volume;
+import com.stefan.bookreader.networking.model.Volumes;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -45,7 +44,16 @@ public final class CatalogBindingAdapter {
             Picasso.with(imageView.getContext()).load(R.drawable.no_book_cover).fit().into(imageView);
             return;
         }
-        Picasso.with(imageView.getContext()).load(imageUrl).placeholder(R.drawable.no_book_cover).fit().into(imageView);
+        Picasso.with(imageView.getContext()).load(imageUrl).fit().into(imageView);
+    }
+
+
+    @BindingAdapter({"img","holderimage"})
+    public static void setImageViewImage(ImageView imageView, String imageUrl,Drawable resPlaceHolder) {
+        if (imageUrl == null) {
+            return;
+        }
+        Picasso.with(imageView.getContext()).load(imageUrl).placeholder(resPlaceHolder).fit().into(imageView);
     }
 
     @BindingAdapter("text")
@@ -64,7 +72,7 @@ public final class CatalogBindingAdapter {
 
 
     @BindingAdapter("ratings")
-    public static void setRatingsText(TextView textView, Volumes.Volume.VolumeInfo volumeInfo) {
+    public static void setRatingsText(TextView textView, Volume.VolumeInfo volumeInfo) {
         if (volumeInfo == null || volumeInfo.getAverageRating() == null) {
             textView.setVisibility(View.GONE);
             return;
@@ -72,28 +80,7 @@ public final class CatalogBindingAdapter {
         textView.setVisibility(View.VISIBLE);
         textView.setText(textView.getContext().getResources().getString(R.string.ratings_text, volumeInfo.getAverageRating().setScale(2, BigDecimal.ROUND_HALF_UP).toString(), volumeInfo.getRatingsCount()));
     }
-/*
 
-    @BindingAdapter({"availableLanguages", "viewModel"})
-    public static void setAvailableLanguages(Spinner spinner, String[] languages, SelectorViewModel selectorViewModel) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(spinner.getContext(), android.R.layout.simple_spinner_item, languages);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                selectorViewModel.setLanguageSelected(((String) adapterView.getItemAtPosition(position)));
-                adapterView.setSelection(position);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-    }*/
 
     @BindingAdapter("visibility")
     public static void setVisibility(TextView textView, String string) {

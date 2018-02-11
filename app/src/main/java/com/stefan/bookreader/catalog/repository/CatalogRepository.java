@@ -3,7 +3,7 @@ package com.stefan.bookreader.catalog.repository;
 
 import com.stefan.bookreader.catalog.navigator.UserSelection;
 import com.stefan.bookreader.catalog.repository.network.BooksNetworkRepository;
-import com.stefan.bookreader.catalog.repository.network.Volumes;
+import com.stefan.bookreader.networking.model.Volumes;
 
 import javax.inject.Inject;
 

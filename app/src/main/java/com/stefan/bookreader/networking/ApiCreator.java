@@ -2,7 +2,6 @@ package com.stefan.bookreader.networking;
 
 
 import com.stefan.bookreader.BuildConfig;
-import com.stefan.bookreader.catalog.repository.network.BooksApi;
 
 import java.io.IOException;
 

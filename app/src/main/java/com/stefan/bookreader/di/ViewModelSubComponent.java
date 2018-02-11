@@ -4,6 +4,7 @@ package com.stefan.bookreader.di;
 import android.app.Activity;
 import android.content.Context;
 
+import com.stefan.bookreader.bookdetails.BookDetailsViewModel;
 import com.stefan.bookreader.catalog.CatalogViewModel;
 
 import dagger.Subcomponent;
@@ -17,4 +18,6 @@ public interface ViewModelSubComponent {
     }
 
     CatalogViewModel provideCatalogViewModel();
+
+    BookDetailsViewModel provideBookDetailViewModel();
 }

@@ -14,6 +14,7 @@
     <string name="published_on">Publish date : %s </string>
     <string name="pages">Pages : </string>
     <string name="no_results">Unfortunately the search generated no results,  please press back and refine your search</string>
+    <string name="publishedby">Publyshed by : %s</string>
 
     <string-array name="select_language_array">
         <item>en</item>

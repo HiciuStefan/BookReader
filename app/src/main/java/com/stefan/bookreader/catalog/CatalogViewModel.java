@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 import com.stefan.bookreader.catalog.navigator.CatalogNavigator;
 import com.stefan.bookreader.catalog.navigator.UserSelection;
 import com.stefan.bookreader.catalog.repository.network.BooksNetworkRepository;
-import com.stefan.bookreader.catalog.repository.network.Volumes;
+import com.stefan.bookreader.networking.model.Volumes;
 import com.stefan.bookreader.viewmodel.ViewModelSubscriptions;
 
 import javax.inject.Inject;

@@ -15,7 +15,7 @@
 
         <variable
             name="volume"
-            type="com.stefan.bookreader.catalog.repository.network.Volumes.Volume" />
+            type="com.stefan.bookreader.networking.model.Volume" />
     </data>
 
 
@@ -41,26 +41,30 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+
                 <ImageView
                     android:layout_width="140dp"
                     android:layout_height="match_parent"
-
                     app:img="@{volume.getVolumeInfo().getImageLinks().getSmallThumbnail()}" />
 
                 <LinearLayout
                     android:paddingLeft="@dimen/padding_smaller"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
+                        android:gravity="center"
                         android:paddingBottom="@dimen/padding_small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{volume.getVolumeInfo().getTitle()}"
-                        tools:text="Title" />
+                        android:textSize="18sp"
+                        tools:text="Title that might be very very " />
 
                     <TextView
+                        android:gravity="center"
                         android:paddingBottom="@dimen/padding_small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -68,56 +72,7 @@
                         app:text="@{volume.getVolumeInfo().getAuthors()}"
                         tools:text="Authors are 1 and 2" />
 
-                    <TextView
-                        android:paddingBottom="@dimen/padding_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Published by "
-                        android:maxLines="1"
-                        app:visibility="@{volume.getVolumeInfo().getPublisher()}"
-                        android:text="@{volume.getVolumeInfo().getPublisher()}" />
 
-                    <TextView
-                        android:paddingBottom="@dimen/padding_small"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLines="1"
-                        tools:text="Published on september "
-                        app:visibility="@{volume.getVolumeInfo().getPublishedDate()}"
-                        android:text="@{@string/published_on(volume.getVolumeInfo().getPublishedDate())}" />
-
-
-                    <TextView
-                        android:paddingBottom="@dimen/padding_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="300 pages"
-                        app:visibility="@{volume.getVolumeInfo().getPageCount()}"
-                        android:text="@{@string/pages + volume.getVolumeInfo().getPageCount() }" />
-
-                    <TextView
-                        android:paddingBottom="@dimen/padding_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="It's an adventure book"
-                        app:text="@{volume.getVolumeInfo().getCategories()}" />
-
-                    <TextView
-                        android:paddingBottom="@dimen/padding_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Has a rating of 1 out of 3 ratings"
-                        app:ratings="@{volume.getVolumeInfo()}" />
-
-                    <TextView
-                        android:paddingBottom="@dimen/padding_small"
-                        android:layout_gravity="left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxLines="2"
-                        tools:text="This is what is probably going to be a really really really long description"
-                        android:ellipsize="end"
-                        android:text="@{volume.getVolumeInfo().getDescription()}" />
                 </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>

@@ -4,6 +4,8 @@ package com.stefan.bookreader.catalog.repository.network;
 import android.text.TextUtils;
 
 import com.stefan.bookreader.catalog.navigator.UserSelection;
+import com.stefan.bookreader.networking.BooksApi;
+import com.stefan.bookreader.networking.model.Volumes;
 
 import javax.inject.Inject;
 
