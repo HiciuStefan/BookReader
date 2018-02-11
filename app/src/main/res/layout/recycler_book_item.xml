@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="catalogActions"
+            type="com.stefan.bookreader.catalog.CatalogActions" />
+
+        <variable
+            name="volume"
+            type="com.stefan.bookreader.catalog.repository.network.Volumes.Volume" />
+    </data>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_smaller">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_height="200dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardElevation="2dp"
+            card_view:cardCornerRadius="4dp"
+            android:onClickListener="@{()->catalogActions.onBookClicked(volume.getId())}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+
+                    app:img="@{volume.getVolumeInfo().getImageLinks().getSmallThumbnail()}" />
+
+                <LinearLayout
+                    android:paddingLeft="@dimen/padding_smaller"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{volume.getVolumeInfo().getTitle()}"
+                        tools:text="Title" />
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        app:text="@{volume.getVolumeInfo().getAuthors()}"
+                        tools:text="Authors are 1 and 2" />
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Published by "
+                        android:maxLines="1"
+                        app:visibility="@{volume.getVolumeInfo().getPublisher()}"
+                        android:text="@{volume.getVolumeInfo().getPublisher()}" />
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        tools:text="Published on september "
+                        app:visibility="@{volume.getVolumeInfo().getPublishedDate()}"
+                        android:text="@{@string/published_on(volume.getVolumeInfo().getPublishedDate())}" />
+
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="300 pages"
+                        app:visibility="@{volume.getVolumeInfo().getPageCount()}"
+                        android:text="@{@string/pages + volume.getVolumeInfo().getPageCount() }" />
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="It's an adventure book"
+                        app:text="@{volume.getVolumeInfo().getCategories()}" />
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Has a rating of 1 out of 3 ratings"
+                        app:ratings="@{volume.getVolumeInfo()}" />
+
+                    <TextView
+                        android:paddingBottom="@dimen/padding_small"
+                        android:layout_gravity="left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        tools:text="This is what is probably going to be a really really really long description"
+                        android:ellipsize="end"
+                        android:text="@{volume.getVolumeInfo().getDescription()}" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

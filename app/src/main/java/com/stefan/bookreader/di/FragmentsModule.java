@@ -1,6 +1,7 @@
 package com.stefan.bookreader.di;
 
 
+import com.stefan.bookreader.catalog.ui.BookDetailsFragment;
 import com.stefan.bookreader.catalog.ui.CatalogFragment;
 import com.stefan.bookreader.catalog.ui.SelectorFragment;
 
@@ -15,4 +16,7 @@ public abstract class FragmentsModule {
 
     @ContributesAndroidInjector
     abstract SelectorFragment provideSelectorFragment();
+
+    @ContributesAndroidInjector
+    abstract BookDetailsFragment providesBookDetailsFragment();
 }

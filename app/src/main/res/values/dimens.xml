@@ -6,4 +6,5 @@
     <dimen name="hint_text_size">10sp</dimen>
     <dimen name="padding">20dp</dimen>
     <dimen name="padding_smaller">10dp</dimen>
+    <dimen name="padding_small">2dp</dimen>
 </resources>

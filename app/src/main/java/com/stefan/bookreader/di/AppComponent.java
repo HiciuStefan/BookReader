@@ -1,6 +1,7 @@
 package com.stefan.bookreader.di;
 
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.stefan.bookreader.BookReaderApp;
@@ -12,9 +13,10 @@ import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
+import dagger.android.support.DaggerAppCompatActivity;
 
 
-@Component(modules = {AndroidInjectionModule.class, AppModule.class, ActivityModule.class})
+@Component(modules = {AndroidInjectionModule.class, AppModule.class, ActivityModule.class,CatalogNavigatorModule.class,NetworkModule.class})
 @Singleton
 public interface AppComponent extends AndroidInjector<DaggerApplication> {
     @Override
@@ -29,4 +31,5 @@ public interface AppComponent extends AndroidInjector<DaggerApplication> {
 
         AppComponent build();
     }
+
 }

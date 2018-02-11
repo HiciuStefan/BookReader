@@ -8,6 +8,7 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 
 import com.stefan.bookreader.R;
+import com.stefan.bookreader.catalog.navigator.UserSelection;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
@@ -26,4 +27,13 @@ public class CatalogActivity extends DaggerAppCompatActivity {
         getSupportActionBar().setTitle(spannableStringBuilder);
 
     }
+
+    public void goToCatalogFragment(UserSelection userSelection) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,CatalogFragment.newInstance(userSelection)).addToBackStack(null).commit();
+    }
+
+    public void goToBookDetails(String bookId) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,BookDetailsFragment.newInstance(bookId)).addToBackStack(null).commit();
+    }
+
 }

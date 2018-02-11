@@ -1,7 +1,10 @@
 package com.stefan.bookreader.di;
 
 
-import com.stefan.bookreader.catalog.ui.CatalogViewModel;
+import android.app.Activity;
+import android.content.Context;
+
+import com.stefan.bookreader.catalog.CatalogViewModel;
 
 import dagger.Subcomponent;
 

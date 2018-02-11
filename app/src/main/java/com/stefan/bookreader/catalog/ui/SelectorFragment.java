@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.stefan.bookreader.R;
+import com.stefan.bookreader.catalog.SelectorViewModel;
 import com.stefan.bookreader.databinding.FragmentSelectorBinding;
 
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerFragment;
-import io.reactivex.Observable;
 
 /**
  * A simple {@link Fragment} subclass.

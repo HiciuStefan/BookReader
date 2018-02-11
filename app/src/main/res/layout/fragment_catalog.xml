@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,19 +10,49 @@
 
         <variable
             name="viewModel"
-            type="com.stefan.bookreader.catalog.ui.CatalogViewModel" />
+            type="com.stefan.bookreader.catalog.CatalogViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:books="@{viewModel}"
-            >
-        </android.support.v7.widget.RecyclerView>
+            app:books="@{viewModel.volumes}"
+            tools:visibility="gone"
+            app:eventHandler="@{viewModel}"
+            android:visibility="@{viewModel.volumes.getItems()==null ? View.GONE:View.VISIBLE}"/>
+
+        <ProgressBar
+
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:visibility="@{viewModel.loading ? View.VISIBLE:View.GONE}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="@{viewModel.volumes.getItems()!=null ? View.GONE:View.VISIBLE}"
+            android:orientation="vertical">
+
+            <ImageView
+                android:src="@drawable/book_not_found"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/no_results" />
+        </LinearLayout>
     </LinearLayout>
 
 

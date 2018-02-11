@@ -5,6 +5,9 @@ import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Context;
 
+import com.stefan.bookreader.catalog.navigator.CatalogNavigator;
+import com.stefan.bookreader.catalog.ui.CatalogActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -20,7 +23,8 @@ public class AppModule {
     }
 
     @Provides
-    Context providesContext(Application application){
+    Context providesContext(Application application) {
         return application.getApplicationContext();
     }
+
 }

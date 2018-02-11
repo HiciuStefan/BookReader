@@ -6,7 +6,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 import android.util.ArrayMap;
 
-import com.stefan.bookreader.catalog.ui.CatalogViewModel;
+import com.stefan.bookreader.catalog.CatalogViewModel;
 
 import java.util.Map;
 import java.util.concurrent.Callable;
