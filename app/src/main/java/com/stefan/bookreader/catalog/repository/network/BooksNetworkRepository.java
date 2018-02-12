@@ -1,7 +1,7 @@
 package com.stefan.bookreader.catalog.repository.network;
 
 
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
 
 import com.stefan.bookreader.catalog.navigator.UserSelection;
 import com.stefan.bookreader.networking.BooksApi;
@@ -25,13 +25,15 @@ public class BooksNetworkRepository {
     }
 
 
-    public Single<Volumes> getVolumes(UserSelection userSelection) {
-        StringBuilder stringBuilder = new StringBuilder(" ");
+    public Single<Volumes> getVolumes(@NonNull UserSelection userSelection) {
+        StringBuilder stringBuilder = new StringBuilder("");
         stringBuilder.append(addExtra(userSelection.getBookTitle(), TITLE));
         stringBuilder.append(addExtra(userSelection.getBookAuthor(), AUTHOR));
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        if(stringBuilder.length() == 0){
+
+        if (stringBuilder.length() == 0) {
             stringBuilder.append("\"\"");
+        } else {
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
 
         return booksApi.getVolumes(stringBuilder.toString(), API_KEY);
@@ -39,7 +41,7 @@ public class BooksNetworkRepository {
 
     private StringBuilder addExtra(String extra, String key) {
         StringBuilder stringBuilder = new StringBuilder("");
-        if (!TextUtils.isEmpty(extra)) {
+        if (extra != null && !extra.isEmpty()) {
             stringBuilder.append(key);
             stringBuilder.append(":");
             stringBuilder.append(extra);

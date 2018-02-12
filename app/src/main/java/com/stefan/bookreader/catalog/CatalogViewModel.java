@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.stefan.bookreader.catalog.navigator.CatalogNavigator;
 import com.stefan.bookreader.catalog.navigator.UserSelection;
@@ -50,6 +51,7 @@ public class CatalogViewModel extends AndroidViewModel implements ViewModelSubsc
                                     loading.set(false);
                                 },
                                 throwable -> {
+                                    catalogNavigator.showError(throwable.getLocalizedMessage());
                                     Timber.e(throwable);
                                     loading.set(false);
                                 }));
@@ -60,7 +62,7 @@ public class CatalogViewModel extends AndroidViewModel implements ViewModelSubsc
         compositeDisposable.dispose();
     }
 
-    public void setUserSelection(UserSelection userSelection) {
+    public void setUserSelection(@NonNull UserSelection userSelection) {
         this.userSelection = userSelection;
     }
 

@@ -4,7 +4,7 @@ package com.stefan.bookreader.catalog.navigator;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public final class UserSelection implements Parcelable {
+public class UserSelection implements Parcelable {
 
     private final String bookTitle;
     private final String bookAuthor;

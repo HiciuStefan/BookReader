@@ -1,6 +1,7 @@
 package com.stefan.bookreader.catalog.ui;
 
 import android.databinding.DataBindingUtil;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -56,5 +57,10 @@ public class VolumesViewAdapter extends RecyclerView.Adapter<VolumesViewAdapter.
             binding.setVolume(volume);
             binding.setCatalogActions(catalogActions);
         }
+    }
+
+    @VisibleForTesting
+    public Volumes getVolumes() {
+        return volumes;
     }
 }

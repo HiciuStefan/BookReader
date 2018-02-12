@@ -31,8 +31,6 @@ public final class SplashScreenBindingAdapter {
                 TextView textView = new TextView(context);
                 textView.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
                 textView.setTextSize(44);
-
-
                 return textView;
             });
             Animation in = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);

@@ -19,7 +19,7 @@ import com.stefan.bookreader.networking.model.Volumes;
 import java.math.BigDecimal;
 import java.util.List;
 
-public final class CatalogBindingAdapter {
+public class CatalogBindingAdapter {
 
 
     private CatalogBindingAdapter() {
@@ -27,8 +27,8 @@ public final class CatalogBindingAdapter {
     }
 
     @BindingAdapter({"books", "eventHandler"})
-    public static void setCatalogBooks(RecyclerView recyclerView, Volumes volumes, CatalogActions catalogActions) {
-        if (volumes == null || volumes.getItems()==null) {
+    public static void setCatalogBooksAndAction(RecyclerView recyclerView, Volumes volumes, CatalogActions catalogActions) {
+        if (volumes == null || volumes.getItems() == null) {
             return;
         }
         if (recyclerView.getAdapter() == null) {
@@ -48,8 +48,8 @@ public final class CatalogBindingAdapter {
     }
 
 
-    @BindingAdapter({"img","holderimage"})
-    public static void setImageViewImage(ImageView imageView, String imageUrl,Drawable resPlaceHolder) {
+    @BindingAdapter({"img", "holderimage"})
+    public static void setImageViewImage(ImageView imageView, String imageUrl, Drawable resPlaceHolder) {
         if (imageUrl == null) {
             return;
         }
@@ -57,8 +57,8 @@ public final class CatalogBindingAdapter {
     }
 
     @BindingAdapter("text")
-    public static void setCatalogBooks(TextView textView, List<String> stringList) {
-        if (stringList == null) {
+    public static void setComaSeparatedText(TextView textView, List<String> stringList) {
+        if (stringList == null || stringList.isEmpty()) {
             return;
         }
         StringBuilder sb = new StringBuilder();
@@ -67,7 +67,7 @@ public final class CatalogBindingAdapter {
             sb.append(",");
         }
         sb = sb.deleteCharAt(sb.length() - 1);
-        textView.setText(sb);
+        textView.setText(sb.toString());
     }
 
 

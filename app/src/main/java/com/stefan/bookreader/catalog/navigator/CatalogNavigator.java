@@ -1,11 +1,11 @@
 package com.stefan.bookreader.catalog.navigator;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.stefan.bookreader.catalog.ui.CatalogActivity;
-
-import javax.inject.Inject;
 
 
 public class CatalogNavigator {
@@ -23,5 +23,12 @@ public class CatalogNavigator {
 
     public void goToBookDetails(String bookId) {
         ((CatalogActivity) context).goToBookDetails(bookId);
+    }
+
+    //added here just to have a way to do this , but it's not proper...
+    @Deprecated
+    public void showError(String localizedMessage) {
+        ((Activity)context).runOnUiThread(() -> Toast.makeText(context, localizedMessage, Toast.LENGTH_SHORT).show());
+
     }
 }
